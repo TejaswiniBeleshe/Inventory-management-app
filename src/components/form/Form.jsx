@@ -43,11 +43,7 @@ const Form = ({items,setItems,editItems,setEditItems})=>{
             <label htmlFor="item-name">Item Name</label>
             <input type="text" name="item-name" id="item-name" value={itemName} onChange={(e)=>setItemName(e.target.value)}/><br/>
             <label htmlFor="category">Category</label>
-           
-            <select  name="category" id="category"  value={category} onChange={(e)=>setCategory(e.target.value)}>
-                <option value="hello">hello</option>
-                <option value="Hi">Hi</option>
-            </select>
+            <input type="text" name="item-name" id="item-name" value={category} onChange={(e)=>setCategory(e.target.value)}/><br/>
             <label htmlFor="quantity">Quantity</label>
             <input type="number" name="quantity" id="quantity" value={quantity} onChange={(e)=>setQuantity(e.target.value)} min={1} /><br/>
             <button type="submit">{editItems?"Reset":"Add"}</button>
