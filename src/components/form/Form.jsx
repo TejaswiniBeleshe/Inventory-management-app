@@ -9,10 +9,22 @@ const Form = ({items,setItems,editItems,setEditItems})=>{
     const handleFormSubmit = (e)=>{
         e.preventDefault();
         console.log(itemName,category,quantity)
-        setItems([...items,{id:Date.now(),name:itemName,category,quantity}])
+        if(!editItems){
+            setItems([...items,{id:Date.now(),name:itemName,category,quantity}])
+       
+        }else{
+            let findAndUpdate = items.map((ele)=>{
+                if(editItems.id === ele.id){
+                    return {...ele,name:itemName,category,quantity}
+                }
+                return ele;
+            })
+            setItems(findAndUpdate);
+            setEditItems('')
+        }
         setItemName('')
         setCategory('')
-        setQuantity('')
+        setQuantity('')  
     }
 
 
@@ -38,7 +50,7 @@ const Form = ({items,setItems,editItems,setEditItems})=>{
             </select>
             <label htmlFor="quantity">Quantity</label>
             <input type="number" name="quantity" id="quantity" value={quantity} onChange={(e)=>setQuantity(e.target.value)} min={1} /><br/>
-            <button type="submit">Add</button>
+            <button type="submit">{editItems?"Reset":"Add"}</button>
         </form>
     )
 }

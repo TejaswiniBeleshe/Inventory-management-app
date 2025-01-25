@@ -4,6 +4,10 @@ import EachRow from "./EachRow"
 const Table = ({items,setItems,editItems,setEditItems})=>{
     
     return(
+        <>
+        <select name="" id="">
+            <option value=""></option>
+        </select>
         <table>
             <thead>
                 <tr>
@@ -20,6 +24,7 @@ const Table = ({items,setItems,editItems,setEditItems})=>{
 
             </tbody>
         </table>
+        </>
     )
 }
 export default Table

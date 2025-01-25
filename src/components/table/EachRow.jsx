@@ -13,6 +13,7 @@ const EachRow = ({ele,setItems,items,editItems,setEditItems})=>{
     const handleEdit = (id)=>{
         const findItem = items.find(ele=>ele.id === id)
         setEditItems(findItem)
+        // alert(<input value={findItem.name}/>)
     }
 
     
