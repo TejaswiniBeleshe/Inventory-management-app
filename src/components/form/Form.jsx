@@ -1,9 +1,11 @@
+import { useEffect } from "react";
 import { useState } from "react";
 
-const Form = ({items,setItems})=>{
+const Form = ({items,setItems,editItems,setEditItems})=>{
     const [itemName,setItemName] = useState('')
     const [category,setCategory] = useState('')
-    const [quantity,setQuantity] = useState(1)
+    const [quantity,setQuantity] = useState(1);
+    
     const handleFormSubmit = (e)=>{
         e.preventDefault();
         console.log(itemName,category,quantity)
@@ -12,6 +14,18 @@ const Form = ({items,setItems})=>{
         setCategory('')
         setQuantity('')
     }
+
+
+    useEffect(()=>{
+        if(editItems){
+            let {name,category,quantity} = editItems
+            setCategory(category)
+            setItemName(name)
+            setQuantity(quantity)
+        }
+    },[editItems])
+    
+    console.log(items)
     return(
         <form onSubmit={handleFormSubmit}>
             <label htmlFor="item-name">Item Name</label>

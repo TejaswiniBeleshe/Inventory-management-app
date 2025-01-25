@@ -1,7 +1,7 @@
 import { useState } from "react"
 import EachRow from "./EachRow"
 
-const Table = ({items,setItems})=>{
+const Table = ({items,setItems,editItems,setEditItems})=>{
     
     return(
         <table>
@@ -15,7 +15,7 @@ const Table = ({items,setItems})=>{
             </thead>
             <tbody>
                 {
-                    items?items.map((ele)=><EachRow key={ele.id} ele={ele}/>):"Please enter items"
+                    items?items.map((ele)=><EachRow key={ele.id} ele={ele} items={items} setItems={setItems} setEditItems={setEditItems} editItems={editItems}/>):"Please enter items"
                 }
 
             </tbody>

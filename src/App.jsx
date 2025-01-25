@@ -12,11 +12,12 @@ function App() {
     { id: 2, name: "Notebook", category: "Stationery", quantity: 5 },
     { id: 3, name: "Mouse", category: "Electronics", quantity: 8 },
   ])
+  const [editItems,setEditItems] = useState('')
 
   return (
     <>
-    <Form items={items} setItems={setItems}/>
-    <Table items={items} setItems={setItems}/>
+    <Form items={items} setItems={setItems} setEditItems={setEditItems} editItems={editItems}/>
+    <Table items={items} setItems={setItems} setEditItems={setEditItems} editItems={editItems}/>
      
     </>
   )
