@@ -1,12 +1,8 @@
 import { useState } from "react"
 import EachRow from "./EachRow"
 
-const Table = ()=>{
-    const [items,setItems] = useState([
-        { id: 1, name: "Laptop", category: "Electronics", quantity: 15 },
-        { id: 2, name: "Notebook", category: "Stationery", quantity: 5 },
-        { id: 3, name: "Mouse", category: "Electronics", quantity: 8 },
-      ])
+const Table = ({items,setItems})=>{
+    
     return(
         <table>
             <thead>

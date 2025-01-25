@@ -3,6 +3,9 @@
 const EachRow = ({ele})=>{
     const {name,category,quantity} = ele
  
+    const handleDelete = (id)=>{
+
+    }
     return(
         <tr>
             <td>{name}</td>
@@ -10,7 +13,7 @@ const EachRow = ({ele})=>{
             <td>{quantity}</td>
             <td>
                 <button>Edit</button>
-                <button onClick={}>Delete</button>
+                <button onClick={()=>handleDelete(id)}>Delete</button>
             </td>
         </tr>
     )
