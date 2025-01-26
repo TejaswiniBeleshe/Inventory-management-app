@@ -92,7 +92,7 @@ const Form = ({ items, setItems, editItems, setEditItems }) => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100">
+          <button type="submit" className="btn btn-primary add-btn w-100">
             {editItems ? "Update" : "Add"}
           </button>
         </form>

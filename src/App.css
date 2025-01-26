@@ -1,11 +1,32 @@
 .sort-btn{
   background-color: rgb(186, 132, 237);
+  transition: transform 0.3s ease;
+ 
+}
+
+.add-btn{
+  transition: transform 0.3s ease;
+}
+.add-btn:hover{
+  transform: scale(1.1); 
+}
+
+.sort-btn:hover{
+  background-color: rgb(148, 152, 152);
+  transform: scale(1.1); 
+   
 }
 
 .edit-btn{
   background-color: rgb(234, 234, 120);
 }
+.edit-btn:hover{
+  background-color: rgb(181, 176, 176);
+}
 
 .delete-btn{
   background-color: rgb(234, 112, 112);
+}
+.delete-btn:hover{
+  background-color: rgb(181, 176, 176);
 }
