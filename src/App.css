@@ -1,3 +1,8 @@
+h2{
+  text-align: center;
+  margin:2rem 0;
+  letter-spacing: 3px;
+}
 .sort-btn{
   background-color: rgb(186, 132, 237);
   transition: transform 0.3s ease;

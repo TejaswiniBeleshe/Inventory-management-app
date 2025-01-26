@@ -60,6 +60,7 @@ const Form = ({ items, setItems, editItems, setEditItems }) => {
               type="text"
               id="item-name"
               className="form-control"
+              placeholder="Add item"
               value={itemName}
               onChange={(e) => setItemName(e.target.value)}
               required
@@ -73,6 +74,7 @@ const Form = ({ items, setItems, editItems, setEditItems }) => {
               type="text"
               id="category"
               className="form-control"
+              placeholder="Add category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               required
@@ -86,6 +88,7 @@ const Form = ({ items, setItems, editItems, setEditItems }) => {
               type="number"
               id="quantity"
               className="form-control"
+              
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
               min={1}
