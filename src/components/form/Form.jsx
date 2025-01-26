@@ -1,53 +1,103 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-const Form = ({items,setItems,editItems,setEditItems})=>{
-    const [itemName,setItemName] = useState('')
-    const [category,setCategory] = useState('')
-    const [quantity,setQuantity] = useState(1);
-    
-    const handleFormSubmit = (e)=>{
-        e.preventDefault();
-        console.log(itemName,category,quantity)
-        if(!editItems){
-            setItems([...items,{id:Date.now(),name:itemName,category,quantity}])
-       
-        }else{
-            let findAndUpdate = items.map((ele)=>{
-                if(editItems.id === ele.id){
-                    return {...ele,name:itemName,category,quantity}
-                }
-                return ele;
-            })
-            setItems(findAndUpdate);
-            setEditItems('')
-        }
-        setItemName('')
-        setCategory('')
-        setQuantity('')  
-    }
 
+const capitalize = (letter)=>{
+    let res = letter.split('')
+    res[0] = res[0].toUpperCase()
+    console.log(res)
+    return res.join('') 
 
-    useEffect(()=>{
-        if(editItems){
-            let {name,category,quantity} = editItems
-            setCategory(category)
-            setItemName(name)
-            setQuantity(quantity)
-        }
-    },[editItems])
-    
-    console.log(items)
-    return(
-        <form onSubmit={handleFormSubmit}>
-            <label htmlFor="item-name">Item Name</label>
-            <input type="text" name="item-name" id="item-name" value={itemName} onChange={(e)=>setItemName(e.target.value)}/><br/>
-            <label htmlFor="category">Category</label>
-            <input type="text" name="item-name" id="item-name" value={category} onChange={(e)=>setCategory(e.target.value)}/><br/>
-            <label htmlFor="quantity">Quantity</label>
-            <input type="number" name="quantity" id="quantity" value={quantity} onChange={(e)=>setQuantity(e.target.value)} min={1} /><br/>
-            <button type="submit">{editItems?"Reset":"Add"}</button>
-        </form>
-    )
 }
-export default Form
+
+const Form = ({ items, setItems, editItems, setEditItems }) => {
+  
+    
+    const [itemName, setItemName] = useState("");
+    const [category, setCategory] = useState("");
+    const [quantity, setQuantity] = useState(1);
+  
+    const handleFormSubmit = (e) => {
+      e.preventDefault();
+      if (!editItems) {
+        setItems([...items, { id: Date.now(), name: capitalize(itemName),category:capitalize(category), quantity }]);
+      } else {
+        const updatedItems = items.map((ele) =>
+          ele.id === editItems.id
+            ? { ...ele, name:capitalize(itemName), category:capitalize(category), quantity }
+            : ele
+        );
+        setItems(updatedItems);
+        setEditItems("");
+      }
+      setItemName("");
+      setCategory("");
+      setQuantity("");
+    };
+  
+    useEffect(() => {
+      if (editItems) {
+        const { name, category, quantity } = editItems;
+        setItemName(name);
+        setCategory(category);
+        setQuantity(quantity);
+      }
+    }, [editItems]);
+  
+    return (
+      <div className="d-flex justify-content-center align-items-center">
+        <form
+          className="p-4 border rounded shadow-sm"
+          style={{ maxWidth: "400px", width: "100%" }}
+          onSubmit={handleFormSubmit}
+        >
+          <h5 className="text-center mb-4">{editItems ? "Edit Item" : "Add Item"}</h5>
+          <div className="mb-3">
+            <label htmlFor="item-name" className="form-label">
+              Item Name
+            </label>
+            <input
+              type="text"
+              id="item-name"
+              className="form-control"
+              value={itemName}
+              onChange={(e) => setItemName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="category" className="form-label">
+              Category
+            </label>
+            <input
+              type="text"
+              id="category"
+              className="form-control"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="quantity" className="form-label">
+              Quantity
+            </label>
+            <input
+              type="number"
+              id="quantity"
+              className="form-control"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+              min={1}
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary w-100">
+            {editItems ? "Update" : "Add"}
+          </button>
+        </form>
+      </div>
+    );
+  };
+  
+  export default Form;

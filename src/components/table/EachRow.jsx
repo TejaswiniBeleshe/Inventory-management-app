@@ -15,7 +15,6 @@ const EachRow = ({ele,setItems,items,editItems,setEditItems})=>{
         // alert(<input value={findItem.name}/>)
     }
 
-    
     return(
         <tr>
             <td>{name}</td>
