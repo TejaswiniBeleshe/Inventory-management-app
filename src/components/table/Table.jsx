@@ -1,12 +1,26 @@
 import { useState } from "react"
 import EachRow from "./EachRow"
 import { useEffect } from "react";
-
-const Table = ({ items, setItems, editItems, setEditItems }) => {
+import "../../App.css"
+const Table = ({ items, setItems,setEditItems }) => {
     const [allCategories, setAllCategories] = useState([]);
     const [filterCat, setFilterCat] = useState("");
     const [filteredItems, setFilteredItems] = useState([...items]);
+    const [sortQun,setSortQun] = useState(false);
+    // const [sorted,setSorted] = useState([])
+    
+    const handleQuantityOrder = () => {
+        if(sortQun){
+           items.sort((a,b)=>b.quantity-a.quantity);
+        }
+    };
+
+    useEffect(()=>{
+       
+        handleQuantityOrder()
+    },[sortQun])
   
+
     useEffect(() => {
       const categories = [...new Set(items.map((ele) => ele.category))];
       setAllCategories(categories);
@@ -19,11 +33,9 @@ const Table = ({ items, setItems, editItems, setEditItems }) => {
       } else {
         setFilteredItems(items);
       }
-    }, [filterCat, items]);
+    }, [filterCat,items]);
   
-    const handleClearFilter = () => {
-      setFilterCat("");
-    };
+    
   
     return (
       <div className="mx-5 mt-5 px-5">
@@ -47,8 +59,8 @@ const Table = ({ items, setItems, editItems, setEditItems }) => {
               ))}
             </select>
           </div>
-          <button className="btn btn-secondary" onClick={handleClearFilter}>
-            Clear Filter
+          <button className="btn sort-btn" onClick={()=>setSortQun((prev)=>!prev)}>
+            Sort Quantity
           </button>
         </div>
         <table className="table table-striped">
