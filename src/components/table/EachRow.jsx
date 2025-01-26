@@ -1,5 +1,4 @@
 
-
 const EachRow = ({ele,setItems,items,editItems,setEditItems})=>{
     const {name,category,quantity} = ele
  
@@ -32,3 +31,4 @@ const EachRow = ({ele,setItems,items,editItems,setEditItems})=>{
 }
 
 export default EachRow
+
